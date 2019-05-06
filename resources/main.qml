@@ -30,7 +30,10 @@ ApplicationWindow
 			}
 
 			Button {
-				id: button
+				signal qmlSignal(string alias, string secret)
+				onClicked: qmlSignal(alias.text, secret.text)
+
+				objectName: "clipboardButton"
 				text: qsTr("Copy to clipboard")
 				Layout.fillWidth: true
 			}

@@ -1,3 +1,5 @@
+#include "MainObject.hpp"
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
@@ -11,5 +13,13 @@ int main(int argc, char** argv) {
 		               }
 	               });
 	engine.load("qrc:/main.qml");
+
+	const auto rootObjects = engine.rootObjects();
+	const auto firstRootObject = rootObjects.first();
+	const auto button = firstRootObject->findChild<QObject*>("clipboardButton");
+	MainObject main;
+	button->connect(button, SIGNAL(qmlSignal(QString, QString)), &main,
+	                SLOT(copyPassword(QString, QString)));
+
 	return app.exec();
 }

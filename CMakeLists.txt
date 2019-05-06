@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fdiagnostics-color")
+set(CMAKE_AUTOMOC ON)
 
 project(pwcalculator LANGUAGES CXX)
 
