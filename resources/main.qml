@@ -20,6 +20,8 @@ ApplicationWindow
 				placeholderText: qsTr("Alias")
 				selectByMouse: true
 				Layout.fillWidth: true
+				Keys.onReturnPressed: clipboardButton.clicked()
+				focus: true
 			}
 
 			TextField {
@@ -28,15 +30,16 @@ ApplicationWindow
 				selectByMouse: true
 				echoMode: TextInput.Password
 				Layout.fillWidth: true
+				Keys.onReturnPressed: clipboardButton.clicked()
 			}
 
 			Button {
+				id: clipboardButton
 				signal qmlSignal(string alias, string secret)
 				onClicked: {
 					qmlSignal(alias.text, secret.text)
 					mainWindow.showMinimized()
 				}
-
 				objectName: "clipboardButton"
 				text: qsTr("Copy to clipboard")
 				Layout.fillWidth: true
