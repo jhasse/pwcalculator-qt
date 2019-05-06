@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.12
 
 ApplicationWindow
 {
+	id: mainWindow
 	visible: true
 	title: qsTr("Password Calculator")
 	minimumWidth: gridLayout.implicitWidth + 20
@@ -31,7 +32,10 @@ ApplicationWindow
 
 			Button {
 				signal qmlSignal(string alias, string secret)
-				onClicked: qmlSignal(alias.text, secret.text)
+				onClicked: {
+					qmlSignal(alias.text, secret.text)
+					mainWindow.showMinimized()
+				}
 
 				objectName: "clipboardButton"
 				text: qsTr("Copy to clipboard")
