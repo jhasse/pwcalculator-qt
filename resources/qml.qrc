@@ -1,5 +1,6 @@
 <RCC>
 	<qresource prefix="/">
 		<file>main.qml</file>
+		<file>com.bixense.PasswordCalculator.svg</file>
 	</qresource>
 </RCC>
