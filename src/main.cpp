@@ -5,6 +5,7 @@
 #include <QQmlApplicationEngine>
 
 int main(int argc, char** argv) {
+	QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	QGuiApplication app(argc, argv);
 	app.setWindowIcon(QIcon(":/com.bixense.PasswordCalculator.svg"));
 	QQmlApplicationEngine engine;
