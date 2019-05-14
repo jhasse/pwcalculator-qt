@@ -38,6 +38,7 @@ ApplicationWindow
 				signal qmlSignal(string alias, string secret)
 				onClicked: {
 					qmlSignal(alias.text, secret.text)
+					secret.text = ""
 					mainWindow.showMinimized()
 				}
 				objectName: "clipboardButton"
