@@ -1,6 +1,9 @@
 pipeline {
   agent {
-    docker { image 'fedora:30' }
+    docker {
+      image 'fedora:30'
+      args '-u root --privileged'
+    }
   }
   stages {
     stage('Linux') {
