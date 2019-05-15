@@ -7,7 +7,7 @@ QML rewrite of the original version written with wxWidgets: https://github.com/j
 Fedora:
 
 ```
-sudo dnf install qt5-qtquickcontrols2-devel
+sudo dnf install cmake qt5-qtquickcontrols2-devel gcc-c++ make boost-devel
 ```
 
 ## Building
@@ -22,7 +22,7 @@ cmake --build build
 ```
 mkdir build-android
 cd build-android
-cmake .. -DCMAKE_FIND_ROOT_PATH=<Qt5 for Android> -DCMAKE_TOOLCHAIN_FILE=$ANDROID_HOME/ndk-bundle/build/cmake/android.toolchain.cmake -DCMAKE_INSTALL_PREFIX=dist
+cmake .. -DCMAKE_PREFIX_PATH=<Qt5 for Android> -DCMAKE_TOOLCHAIN_FILE=$ANDROID_HOME/ndk-bundle/build/cmake/android.toolchain.cmake -DCMAKE_INSTALL_PREFIX=dist
 make install
 <Qt5 for Android>/bin/androiddeployqt --output dist --gradle
 adb install -r build-android/dist/build/outputs/apk/*/dist-*.apk

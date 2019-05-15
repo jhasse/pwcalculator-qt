@@ -5,14 +5,17 @@ set(CMAKE_AUTOMOC ON)
 
 project(pwcalculator LANGUAGES CXX)
 
+if(ANDROID)
+	set(CMAKE_FIND_ROOT_PATH ${CMAKE_PREFIX_PATH})
+endif()
 find_package(Qt5 COMPONENTS QuickControls2 REQUIRED)
 qt5_add_resources(RESOURCES resources/qml.qrc)
 
 file(GLOB SRC src/*.cpp)
 
 if(ANDROID)
-	SET(CMAKE_ANDROID_STL_TYPE c++_shared)
-	SET(ANDROID_BUILD_TOOLS_REVISION "28.0.3")
+	set(CMAKE_ANDROID_STL_TYPE c++_shared)
+	set(ANDROID_BUILD_TOOLS_REVISION "28.0.3")
 	find_package(Qt5 COMPONENTS AndroidExtras REQUIRED)
 
 	add_library(pwcalculator SHARED ${SRC} ${RESOURCES})
