@@ -8,8 +8,8 @@ pipeline {
   stages {
     stage('Linux') {
       steps {
-        sh 'dnf install -y cmake qt5-qtquickcontrols2-devel gcc-c++'
-        sh 'cmake -Bbuild -H.'
+        sh 'dnf install -y cmake qt5-qtquickcontrols2-devel gcc-c++ ninja'
+        sh 'cmake -Bbuild -H. -GNinja'
         sh 'cmake --build build'
       }
     }
