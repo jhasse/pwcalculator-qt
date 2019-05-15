@@ -1,0 +1,14 @@
+{
+   "qt": "@QT_HOST_PREFIX@",
+   "sdk": "$ENV{ANDROID_HOME}",
+   "ndk": "@CMAKE_ANDROID_NDK@",
+   "sdkBuildToolsRevision": "@ANDROID_BUILD_TOOLS_REVISION@",
+   "toolchain-prefix": "llvm",
+   "tool-prefix": "llvm",
+   "useLLVM": true,
+   "ndk-host": "@ANDROID_NDK_HOST_SYSTEM_NAME@",
+   "target-architecture": "@CMAKE_ANDROID_ARCH_ABI@",
+   "android-package-source-directory": "@ANDROID_PACKAGE_SRC_DIR@",
+   "stdcpp-path": "@CMAKE_ANDROID_NDK@/sources/cxx-stl/llvm-libc++/libs/@CMAKE_ANDROID_ARCH_ABI@/lib@CMAKE_ANDROID_STL_TYPE@.so",
+   "application-binary": "@ANDROID_APP_BINARY@"
+}
