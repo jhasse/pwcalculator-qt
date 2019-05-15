@@ -2,12 +2,13 @@ pipeline {
   agent {
     docker {
       image 'fedora:30'
+      args '-u root'
     }
   }
   stages {
     stage('Linux') {
       steps {
-        sh 'sudo dnf install -y cmake qt5-qtquickcontrols2-devel'
+        sh 'dnf install -y cmake qt5-qtquickcontrols2-devel'
         sh 'cmake -Bbuild -H.'
         sh 'cmake --build build'
       }
