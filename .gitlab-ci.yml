@@ -1,0 +1,15 @@
+android:
+  image: registry.gitlab.com/jhasse/android-qt-docker/master:6038c0aa6ba5ed8d927fd5675bb49d6873b9b5a6
+  stage: build
+  script:
+  - mkdir build-android
+  - cd build-android
+  - cmake .. -DCMAKE_PREFIX_PATH=/opt/qt -DCMAKE_TOOLCHAIN_FILE=/opt/sdk/ndk-bundle/build/cmake/android.toolchain.cmake -DCMAKE_INSTALL_PREFIX=dist -DCMAKE_BUILD_TYPE=Release
+  - make install
+  - /opt/qt/bin/androiddeployqt --output dist --gradle --release
+  artifacts:
+    paths:
+    - build-android/dist/build/outputs/apk/release/dist-release-unsigned.apk
+
+variables:
+  CLICOLOR_FORCE: "1"
