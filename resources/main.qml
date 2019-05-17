@@ -1,4 +1,4 @@
-import QtQuick 2.1
+import QtQuick 2.12
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.12
 
@@ -12,7 +12,11 @@ ApplicationWindow
 
 	GridLayout {
 		id: gridLayout
-		anchors.centerIn: parent
+		anchors {
+			horizontalCenter: parent.horizontalCenter
+			top: parent.top
+			topMargin: 10 + (parent.height - implicitHeight - 20) / 4
+		}
 		ColumnLayout {
 			spacing: 10
 			TextField {
@@ -20,8 +24,16 @@ ApplicationWindow
 				placeholderText: qsTr("Alias")
 				selectByMouse: true
 				Layout.fillWidth: true
-				Keys.onReturnPressed: clipboardButton.clicked()
+				Keys.onReturnPressed: {
+					// On Android this gets called when the users clicks "Next" on the virutal keyboard
+					if (Qt.platform.os === "android") {
+						secret.focus = true
+					} else {
+						clipboardButton.clicked()
+					}
+				}
 				focus: true
+				EnterKey.type: Qt.EnterKeyNext
 			}
 
 			TextField {
