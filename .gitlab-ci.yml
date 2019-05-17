@@ -6,10 +6,10 @@ android:
   - cd build-android
   - cmake .. -DCMAKE_PREFIX_PATH=/opt/qt -DCMAKE_TOOLCHAIN_FILE=/opt/sdk/ndk-bundle/build/cmake/android.toolchain.cmake -DCMAKE_INSTALL_PREFIX=dist -DCMAKE_BUILD_TYPE=Release
   - make install
-  - /opt/qt/bin/androiddeployqt --output dist --gradle --release
+  - /opt/qt/bin/androiddeployqt --output dist --gradle --sign ../android/keystore.jks pwcalculator --storepass $KEYSTORE_PW --keypass $KEYSTORE_PW
   artifacts:
     paths:
-    - build-android/dist/build/outputs/apk/release/dist-release-unsigned.apk
+    - build-android/dist/build/outputs/apk/release/dist-release-signed.apk
 
 variables:
   CLICOLOR_FORCE: "1"
