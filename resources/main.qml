@@ -25,7 +25,7 @@ ApplicationWindow
 				selectByMouse: true
 				Layout.fillWidth: true
 				Keys.onReturnPressed: {
-					// On Android this gets called when the users clicks "Next" on the virutal keyboard
+					// On Android this gets called when the users clicks "Next" on the virtual keyboard
 					if (Qt.platform.os === "android") {
 						secret.focus = true
 					} else {
