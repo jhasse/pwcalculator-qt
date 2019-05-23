@@ -3,8 +3,12 @@
 #include <QGuiApplication>
 #include <QIcon>
 #include <QQmlApplicationEngine>
+#include <QQuickStyle>
 
 int main(int argc, char** argv) {
+#ifdef Q_OS_ANDROID
+	QQuickStyle::setStyle("Material");
+#endif
 	QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	QGuiApplication app(argc, argv);
 	app.setWindowIcon(QIcon(":/com.bixense.PasswordCalculator.svg"));
