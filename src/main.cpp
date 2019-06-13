@@ -9,6 +9,9 @@ int main(int argc, char** argv) {
 #ifdef Q_OS_ANDROID
 	QQuickStyle::setStyle("Material");
 #endif
+#ifdef _WIN32
+	QQuickStyle::setStyle("Universal");
+#endif
 	QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	QGuiApplication app(argc, argv);
 	app.setWindowIcon(QIcon(":/com.bixense.PasswordCalculator.svg"));

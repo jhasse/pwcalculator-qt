@@ -1,9 +1,12 @@
 cmake_minimum_required(VERSION 3.8)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fdiagnostics-color")
 set(CMAKE_AUTOMOC ON)
 
 project(pwcalculator LANGUAGES CXX)
+
+if(NOT MSVC)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fdiagnostics-color")
+endif()
 
 if(ANDROID)
 	set(CMAKE_FIND_ROOT_PATH ${CMAKE_PREFIX_PATH})
@@ -36,3 +39,7 @@ else()
 endif()
 
 target_link_libraries(pwcalculator PRIVATE Qt5::QuickControls2)
+
+if(CMAKE_BUILD_TYPE STREQUAL "Release" OR MSVC)
+	set_target_properties(pwcalculator PROPERTIES WIN32_EXECUTABLE 1)
+endif()
