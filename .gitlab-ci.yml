@@ -1,5 +1,5 @@
 android:
-  image: registry.gitlab.com/jhasse/android-qt-docker/master:6038c0aa6ba5ed8d927fd5675bb49d6873b9b5a6
+  image: registry.gitlab.com/jhasse/android-qt-docker:v5.13.0
   stage: build
   script:
   - mkdir build-android
