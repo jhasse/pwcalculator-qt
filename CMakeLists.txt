@@ -11,6 +11,7 @@ endif()
 if(ANDROID)
 	set(CMAKE_FIND_ROOT_PATH ${CMAKE_PREFIX_PATH})
 endif()
+find_package(Boost)
 find_package(Qt5 COMPONENTS QuickControls2 REQUIRED)
 qt5_add_resources(RESOURCES resources/qml.qrc)
 
@@ -38,7 +39,7 @@ else()
 	add_executable(pwcalculator ${SRC} ${RESOURCES})
 endif()
 
-target_link_libraries(pwcalculator PRIVATE Qt5::QuickControls2)
+target_link_libraries(pwcalculator PRIVATE Qt5::QuickControls2 Boost::boost)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release" OR MSVC)
 	set_target_properties(pwcalculator PROPERTIES WIN32_EXECUTABLE 1)
