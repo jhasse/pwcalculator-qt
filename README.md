@@ -25,5 +25,5 @@ cd build-android
 cmake .. -DCMAKE_PREFIX_PATH=<Qt5 for Android> -DCMAKE_TOOLCHAIN_FILE=$ANDROID_HOME/ndk-bundle/build/cmake/android.toolchain.cmake -DCMAKE_INSTALL_PREFIX=dist
 make install
 <Qt5 for Android>/bin/androiddeployqt --output dist --gradle
-adb install -r build-android/dist/build/outputs/apk/*/dist-*.apk
+adb install -r dist/build/outputs/apk/*/dist-*.apk
 ```
