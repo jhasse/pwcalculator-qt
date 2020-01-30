@@ -4,6 +4,7 @@
 #include <QIcon>
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
+#include <iostream>
 
 int main(int argc, char** argv) {
 #ifdef Q_OS_ANDROID
@@ -14,6 +15,10 @@ int main(int argc, char** argv) {
 #endif
 	QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 	QGuiApplication app(argc, argv);
+	if (argc > 1) {
+		std::cerr << "unknown option: " << argv[1] << std::endl;
+		return EXIT_FAILURE;
+	}
 	app.setWindowIcon(QIcon(":/com.bixense.PasswordCalculator.svg"));
 	QQmlApplicationEngine engine;
 	engine.connect(&engine, &QQmlApplicationEngine::objectCreated,
