@@ -6,6 +6,10 @@
 #include <QQuickStyle>
 #include <iostream>
 
+#ifdef Q_OS_ANDROID
+#include <QtAndroid>
+#endif
+
 int main(int argc, char** argv) {
 #ifdef Q_OS_ANDROID
 	QQuickStyle::setStyle("Material");
@@ -35,6 +39,10 @@ int main(int argc, char** argv) {
 	MainObject main;
 	button->connect(button, SIGNAL(qmlSignal(QString, QString)), &main,
 	                SLOT(copyPassword(QString, QString)));
+
+#ifdef Q_OS_ANDROID
+	QtAndroid::hideSplashScreen(200);
+#endif
 
 	return app.exec();
 }
