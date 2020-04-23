@@ -10,6 +10,8 @@ endif()
 
 if(ANDROID)
 	set(CMAKE_FIND_ROOT_PATH ${CMAKE_PREFIX_PATH})
+else()
+	find_package(Qt5 COMPONENTS Widgets REQUIRED)
 endif()
 find_package(Boost)
 find_package(Qt5 COMPONENTS QuickControls2 REQUIRED)
@@ -40,6 +42,9 @@ else()
 endif()
 
 target_link_libraries(pwcalculator PRIVATE Qt5::QuickControls2 Boost::boost)
+if(NOT ANDROID)
+	target_link_libraries(pwcalculator PRIVATE Qt5::Widgets)
+endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release" OR MSVC)
 	set_target_properties(pwcalculator PROPERTIES WIN32_EXECUTABLE 1)
